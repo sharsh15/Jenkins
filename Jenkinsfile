@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('cloning the github repo') {
             steps {
-                bat "cmd /c rmdir /s /q Pipeline"
+                deleteDir()
+               // bat "cmd /c rmdir /s /q Pipeline"
                 bat "cmd /c git clone https://github.com/sharsh15/Pipeline.git"   
             }
         }
