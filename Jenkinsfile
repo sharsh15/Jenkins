@@ -12,7 +12,7 @@ pipeline {
                 deleteDir()
                // bat "cmd /c rmdir /s /q Pipeline"
                 echo "Cloning this ${params.GithubURL} in ${params.Environment}"             
-                bat "cmd /c git clone ${params.Github-url}"   
+                bat "cmd /c git clone ${params.GithubURL}"   
             }
         }
         stage('building the jar file') {
