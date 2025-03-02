@@ -1,12 +1,18 @@
 pipeline {
     agent any
 
+    parameters{
+        string(name: 'GithubURL', defaultValue: 'URL', description: 'Please enter the Gitbut repository url for repo cloning')
+        choice(name: 'Environment', choices: ['Development', 'Testing', 'Production'], description: 'Pick environment to clone the git repo')
+    }
+
     stages {
         stage('cloning the github repo') {
             steps {
                 deleteDir()
                // bat "cmd /c rmdir /s /q Pipeline"
-                bat "cmd /c git clone https://github.com/sharsh15/Pipeline.git"   
+                echo "Cloning this ${params.GithubURL} in ${params.Environment}"             
+                bat "cmd /c git clone ${params.Github-url}"   
             }
         }
         stage('building the jar file') {
