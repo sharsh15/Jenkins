@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image '70591cb7a67e'  // Use an image with Maven pre-installed
-            args '-v /tmp:/tmp'         // Optional: Mounts /tmp if needed
-        }
-    }
+    agent any
 
     parameters{
         string(name: 'GithubURL', defaultValue: 'URL', description: 'Please enter the Gitbut repository url for repo cloning')
@@ -25,7 +20,9 @@ pipeline {
             steps {
                     dir('Pipeline'){
                     sh "pwd"
-                    sh "mvn clean install"
+                    sh """
+                        docker run --rm -v \$(pwd):/usr/src/app -w /usr/src/app maven:latest mvn clean install
+                    """
                 }
             }
         }
