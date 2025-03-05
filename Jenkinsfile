@@ -10,23 +10,22 @@ pipeline {
         stage('cloning the github repo') {
             steps {
                 deleteDir()
-               // bat "cmd /c rmdir /s /q Pipeline"
                 echo "Cloning this ${params.GithubURL} in ${params.Environment}"             
-                bat "cmd /c git clone ${params.GithubURL}"   
+                sh "git clone${params.Github-url}"   
             }
         }
         stage('building the jar file') {
             steps {
-                dir('Pipeline'){
-                    bat "cmd /c cd"
-                    bat "cmd /c mvn clean install"
+                    dir('Pipeline'){
+                    sh "pwd"
+                    sh "mvn clean install"
                 }
             }
         }
         stage('running the jar file') {
             steps {
                 dir('Pipeline/target') {
-                bat "java -jar mavenproject-0.0.1-SNAPSHOT.jar"
+                sh "java -jar mavenproject-0.0.1-SNAPSHOT.jar"
                 }
             }
         }
