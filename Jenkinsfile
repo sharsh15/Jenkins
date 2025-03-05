@@ -10,7 +10,7 @@ pipeline {
         stage('cloning the github repo') {
             steps {
                 deleteDir()
-                echo "Cloning this ${params.GithubURL} in ${params.Environment}"             
+                sh "echo Cloning this ${params.GithubURL} in ${params.Environment}"             
                 sh "git clone${params.Github-url}"   
             }
         }
