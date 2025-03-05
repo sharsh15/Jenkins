@@ -10,8 +10,10 @@ pipeline {
         stage('cloning the github repo') {
             steps {
                 deleteDir()
-                sh "echo Cloning this ${params.GithubURL} in ${params.Environment}"             
-                sh "git clone${params.Github-url}"   
+                sh """
+                    echo Cloning ${params.GithubURL} in ${params.Environment}
+                    git clone ${params.GithubURL}
+                """  
             }
         }
         stage('building the jar file') {
