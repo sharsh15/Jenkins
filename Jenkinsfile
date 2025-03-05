@@ -20,9 +20,7 @@ pipeline {
             steps {
                     dir('Pipeline'){
                     sh "pwd"
-                    sh """
-                        docker run --rm -v \$(pwd):/usr/src/app -w /usr/src/app maven:latest mvn clean install
-                    """
+                    sh "mvn clean install"
                 }
             }
         }
