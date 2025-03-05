@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image '70591cb7a67e'  // Use an image with Maven pre-installed
+            args '-v /tmp:/tmp'         // Optional: Mounts /tmp if needed
+        }
+    }
 
     parameters{
         string(name: 'GithubURL', defaultValue: 'URL', description: 'Please enter the Gitbut repository url for repo cloning')
