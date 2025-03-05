@@ -20,7 +20,7 @@ pipeline {
             steps {
                     dir('Pipeline'){
                     sh "pwd"
-                    sh "sudo mvn clean install"
+                    sh "mvn clean install"
                 }
             }
         }
