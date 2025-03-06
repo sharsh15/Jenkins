@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+        stages {
+        stage('Checkout the Github Repo') {
+            steps {
+                // Checkout the source code from Git repository
+                git branch: 'bash_pipelin', url: 'https://github.com/sharsh15/Jenkins.git'
+            }
+        }
         stage('cloning the github repo') {
             steps {
                 deleteDir()
