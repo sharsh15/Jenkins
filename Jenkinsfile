@@ -7,7 +7,6 @@ pipeline {
     }
 
     stages {
-        stages {
         stage('Checkout the Github Repo') {
             steps {
                 // Checkout the source code from Git repository
